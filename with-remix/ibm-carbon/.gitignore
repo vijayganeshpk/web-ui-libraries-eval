@@ -1,0 +1,11 @@
+node_modules
+
+/.cache
+/build
+.env
+
+# Since the below files are auto created using sass command
+public/styles/main.css
+public/styles/main.css.map
+
+public/styles/~@ibm/
