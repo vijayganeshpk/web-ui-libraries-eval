@@ -65,4 +65,4 @@ export const links: LinksFunction = () => [
 ];
 ```
 
-Copy the font folder `node_modules/@ibm/plex/IBM-Plex-Sans` to folder `public/styles/~@ibm/plex` to address the 404 issues
+Copy the font folder is handled by the `copy-ibm-fonts` npm script, which is called in development and production builds.
