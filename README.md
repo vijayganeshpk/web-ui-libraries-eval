@@ -1,4 +1,4 @@
-# web-ui-libraries-eval
+# Web UI Libraries Evaluation
 
 Evaluating various web UI libraries to use in future projects
 
