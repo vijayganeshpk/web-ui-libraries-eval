@@ -1,10 +1,5 @@
 # Remix with Adobe Spectrum Design System (React Spectrum)
 
-## Current issues (WIP)
-
-- Getting the layout grid to be 100vh
-- Even though `lightTheme` is set, the pages flip back to dark theme after initial loading
-
 ## Setup Remix
 
 Start with creating remix project wih vite template
@@ -29,7 +24,7 @@ References:
   #5401](https://github.com/adobe/react-spectrum/issues/5401#issuecomment-1815445715)
 - [Next.js](https://react-spectrum.adobe.com/react-spectrum/ssr.html#nextjs)
 
-```json
+```js
 ssr: {
     noExternal: [
       "@adobe/react-spectrum",
@@ -88,3 +83,42 @@ ssr: {
     ],
   },
 ```
+
+Add the necessary markup to the `root.tsx`
+
+```tsx
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useNavigate,
+} from "@remix-run/react";
+import { Provider, defaultTheme } from "@adobe/react-spectrum";
+
+export default function App() {
+  const navigate = useNavigate();
+  return (
+.
+.
+.
+
+        <Provider
+          colorScheme="light"
+          theme={defaultTheme}
+          router={{ navigate }}
+          minHeight="100dvh"
+        >
+          <Outlet />
+        </Provider>
+        <ScrollRestoration />
+.
+.
+.
+
+  );
+}
+```
+
+`colorScheme` is set to `light` to force `light` theme, if left out it changes as per the browsers color theme preference.

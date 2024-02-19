@@ -1,28 +1,29 @@
-import { Grid, View } from "@adobe/react-spectrum";
+import { Flex, View } from "@adobe/react-spectrum";
 import { Outlet } from "@remix-run/react";
 
 export default function Layout() {
-    return (<Grid
-        areas={[
-            'header  header',
-            'sidebar content',
-            'footer  footer'
-        ]}
-        columns={['1fr', '3fr']}
-        rows={['size-1000', 'auto', 'size-1000']}
-        gap="size-100">
-        <View gridArea="header">Header Area</View>
-        <View gridArea="sidebar">
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/button">Button</a></li>
-                </ul>
-            </nav>
-        </View>
+    return (<Flex
+        direction="column"
+        gap="size-100"
+    >
+        <View gridArea="header" colorVersion={6}>Header Area</View>
         <View gridArea="content" colorVersion={6}>
-            <Outlet />
+            <Flex direction="row" gap="size-100" minHeight="100dvh">
+                <View colorVersion={6} width="size-2000">
+                    <nav>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/button">Button</a></li>
+                        </ul>
+                    </nav>
+                </View>
+                <View colorVersion={6} flex backgroundColor="gray-200">
+                    <main>
+                        <Outlet />
+                    </main>
+                </View>
+            </Flex>
         </View>
-        <View gridArea="footer">Footer Area</View>
-    </Grid>)
+        <View gridArea="footer" colorVersion={6}>Footer Area</View>
+    </Flex>)
 }

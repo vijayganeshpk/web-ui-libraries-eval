@@ -4,11 +4,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
 } from "@remix-run/react";
-import { Provider, lightTheme } from '@adobe/react-spectrum';
+import { Provider, defaultTheme } from '@adobe/react-spectrum';
 import "~/styles/main.css";
 
 export default function App() {
+  const navigate = useNavigate();
   return (
     <html lang="en">
       <head>
@@ -18,11 +20,11 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Provider theme={lightTheme}>
+        <Provider colorScheme="light" theme={defaultTheme} router={{ navigate }} minHeight="100dvh">
           <Outlet />
-          <ScrollRestoration />
-          <Scripts />
         </Provider>
+        <ScrollRestoration />
+        <Scripts />
       </body>
     </html>
   );
